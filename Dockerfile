@@ -2,10 +2,8 @@
 FROM php:8.2-apache
 
 # Instalar dependencias necesarias
-RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev zip libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip gd mbstring exif pcntl bcmath
-
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo_pgsql
 # Copiar archivos del proyecto
 COPY . /var/www/html
 
